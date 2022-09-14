@@ -8,12 +8,14 @@ export default function Cart({ accessToken }) {
   }
 
   useEffect(() => {
-    if (window && document) {
+    if (window && document && !document.getElementById('app-cart')) {
       const script = document.createElement('script');
       script.id = 'app-user';
       script.src = 'http://localhost:3000/cart/cartWithContainer.bundle.js';
       script.onload = renderMicrofrontend;
       document.head.appendChild(script);
+    } else {
+      renderMicrofrontend();
     }
   }, []);
 

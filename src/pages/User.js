@@ -8,12 +8,14 @@ export default function User({ onLoginSuccessful }) {
   }
 
   useEffect(() => {
-    if (window && document) {
+    if (window && document && !document.getElementById('app-user')) {
       const script = document.createElement('script');
       script.id = 'app-user';
       script.src = 'http://localhost:3000/login/userWithContainer.bundle.js';
       script.onload = renderMicrofrontend;
       document.head.appendChild(script);
+    } else {
+      renderMicrofrontend();
     }
   }, []);
 
