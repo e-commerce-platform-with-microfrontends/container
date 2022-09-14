@@ -1,4 +1,3 @@
-const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWelpackPlugin = require('html-webpack-plugin');
 
@@ -20,7 +19,12 @@ const devConfig = {
   },
   output: {
     filename: '[name].bundle.js',
-  }
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    'styled-components': 'styled'
+  },
 };
 
 module.exports = merge(commonConfig, devConfig);
